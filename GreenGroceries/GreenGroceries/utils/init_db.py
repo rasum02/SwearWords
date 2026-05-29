@@ -3,10 +3,6 @@ import os
 import csv
 
 from dotenv import load_dotenv
-from choices import df
-import numpy as np
-
-np.set_printoptions(legacy='1.25')
 
 load_dotenv()
 
