@@ -1,11 +1,11 @@
 from flask import render_template, request, Blueprint
 from flask_login import login_required, current_user
 
-from GreenGroceries.forms import FilterProduceForm, AddProduceForm, BuyProduceForm, RestockProduceForm
+from GreenGroceries.forms import FilterProduceForm, AddProduceForm, BuyProduceForm, RestockProduceForm, FilterWordsForm
 from GreenGroceries.models import Produce as ProduceModel, ProduceOrder
 from GreenGroceries.queries import insert_produce, get_produce_by_pk, Sell, \
     insert_sell, get_all_produce_by_farmer, get_produce_by_filters, insert_produce_order, update_sell, \
-    get_orders_by_customer_pk
+    get_orders_by_customer_pk, get_words_by_filters, get_all_words
 
 Produce = Blueprint('Produce', __name__)
 
@@ -94,3 +94,16 @@ def restock_produce(pk):
 def your_orders():
     orders = get_orders_by_customer_pk(current_user.pk)
     return render_template('pages/your-orders.html', orders=orders)
+
+@Produce.route("/swearwords", methods=['GET', 'POST'])
+def swearwords():
+    form = FilterWordsForm()
+    title = 'Swear Words'
+    words = []
+    if request.method == 'POST':
+        words = get_words_by_filters(
+            word=request.form.get('word'),
+            language=request.form.get('language'),
+            category=request.form.get('category')
+        )
+    return render_template('pages/produce.html', words=words, form=form)

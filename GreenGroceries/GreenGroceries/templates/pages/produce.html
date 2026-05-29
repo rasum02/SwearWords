@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from 'components/macros.html' import select_field, filter_produce_form, produce_card %}
+{% from 'components/macros.html' import filter_words_form, word_card %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/produce.css') }}">
@@ -10,19 +10,19 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Find specific produce</h2>
+    <h2>Search swear words, motherfucker!</h2>
     <h3 class="text--gray">
-        Try filtering produce by your needs and see what you can find!
+        Try filtering words by language or category, bitch!
     </h3>
-    {{ filter_produce_form(form=form) }}
+    {{ filter_words_form(form=form) }}
     <div class="produce">
-        {% if produce|length %}
-            {% for product in produce %}
-                {{ produce_card(product=product) }}
+        {% if words|length %}
+            {% for word in words %}
+                {{ word_card(word=word) }}
             {% endfor %}
         {% else %}
             <h3 class="text--gray">
-                No products found for selected filters
+                No words found for selected filters, shithead!
             </h3>
         {% endif %}
     </div>

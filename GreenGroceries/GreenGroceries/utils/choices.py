@@ -2,6 +2,8 @@ import os
 import pandas as pd
 
 DATASET_PATH = os.path.join(os.path.dirname(__file__),'..','..', 'GreenGroceries', 'dataset', 'fruitvegprices-2017_2022.csv')
+LANGUAGES_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'languages.csv')
+CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'categories.csv')
 
 
 def get_label_name(string):
@@ -24,11 +26,15 @@ class ModelChoices:
 
 
 df = pd.read_csv(DATASET_PATH, sep=',')
+df_languages = pd.read_csv(LANGUAGES_PATH, sep=',')
+df_categories = pd.read_csv(CATEGORIES_PATH, sep=',')
 
 ProduceCategoryChoices = ModelChoices(df.category.unique())
 ProduceItemChoices = ModelChoices(df.item.unique())
 ProduceVarietyChoices = ModelChoices(df.variety.unique())
 ProduceUnitChoices = ModelChoices(df.unit.unique())
+LanguageChoices = ModelChoices(df_languages.language.unique())
+WordCategoryChoices = ModelChoices(df_categories.category.unique())
 
 UserTypeChoices = ModelChoices(['Farmer', 'Customer'])
 

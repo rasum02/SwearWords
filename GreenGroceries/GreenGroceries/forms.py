@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Length, ValidationError, NumberRang
 
 from GreenGroceries.queries import get_user_by_user_name, get_farmer_by_pk, get_customer_by_pk
 from GreenGroceries.utils.choices import ProduceItemChoices, ProduceCategoryChoices, UserTypeChoices, \
-    ProduceVarietyChoices, ProduceUnitChoices
+    ProduceVarietyChoices, ProduceUnitChoices, LanguageChoices, WordCategoryChoices
 
 
 class UserLoginForm(FlaskForm):
@@ -66,6 +66,15 @@ class FilterProduceForm(FlaskForm):
 
     submit = SubmitField('Filter')
 
+
+class FilterWordsForm(FlaskForm):
+    word = StringField('Word',
+                       render_kw=dict(placeholder='Search for a swearword...'))
+    language = SelectField('Language',
+                           choices=LanguageChoices.choices())
+    category = SelectField('Category',
+                           choices=WordCategoryChoices.choices())
+    submit = SubmitField('Search')
 
 class AddProduceForm(FlaskForm):
     category = SelectField('Category',
