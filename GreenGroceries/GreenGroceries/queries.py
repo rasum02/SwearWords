@@ -115,6 +115,46 @@ def get_produce_by_filters(category=None, item=None, variety=None,
     produce = [Produce(res) for res in db_cursor.fetchall()] if db_cursor.rowcount > 0 else []
     return produce
 
+def get_words_by_filters(word=None, language=None, category=None):
+    sql = """
+    SELECT w.word_id, w.word, l.language, c.category
+    FROM Word w
+    JOIN Has h ON h.word_id = w.word_id
+    JOIN Language l ON l.language_id = h.language_id
+    LEFT JOIN BelongsTo bt ON bt.word_id = w.word_id
+    LEFT JOIN Category c ON c.category_id = bt.category_id
+    WHERE 1=1
+    """
+    conditionals = []
+    if word:
+        conditionals.append(f"w.word ILIKE '%{word}%'")
+    if language:
+        conditionals.append(f"l.language_id = '{language}'")
+    if category:
+        conditionals.append(f"c.category = '{category}'")
+    
+    if conditionals:
+        sql += " AND " + " AND ".join(conditionals)
+
+    sql += " ORDER BY w.word_id"
+    db_cursor.execute(sql)
+    words = [dict(res) for res in db_cursor.fetchall()] if db_cursor.rowcount > 0 else []
+    return words
+
+def get_all_words():
+    sql = """
+    SELECT w.word_id, w.word, l.language, c.category
+    FROM Word w
+    JOIN Has h ON h.word_id = w.word_id
+    JOIN Language l ON l.language_id = h.language_id
+    LEFT JOIN BelongsTo bt ON bt.word_id = w.word_id
+    LEFT JOIN Category c ON c.category_id = bt.category_id
+    ORDER by w.word_id
+    """
+    db_cursor.execute(sql)
+    words = [dict(res) for res in db_cursor.fetchall()] if db_cursor.rowcount > 0 else []
+    return words
+
 
 def get_customer_by_pk(pk):
     sql = """
