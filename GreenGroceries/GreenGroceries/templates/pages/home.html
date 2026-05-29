@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% from "components/macros.html" import cta_button %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
@@ -17,7 +16,6 @@
                     Swear words have existed for thousands of years and are found in almost every language and culture. Although people often think of profanity as rude or inappropriate, linguists and historians see it as an important part of human communication and social behavior.
                 </p>
 
-                <!-- {{ cta_button('btn--large') }}  OBS comment -->
 
             </div>
             <div class="hero__right">
@@ -121,7 +119,7 @@
 
                     </p>
 
-                    {{ cta_button('btn--large') }}
+                    <a class="btn btn--large" href="{{ url_for('Produce.produce') }}">Search Swear Words</a>
                 </div>
                 <img src="{{ url_for('static', filename='images/produce4.jpg') }}" alt="produce">
             </div>

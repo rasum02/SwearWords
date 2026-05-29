@@ -1,9 +1,9 @@
 import os
 import pandas as pd
 
-DATASET_PATH = os.path.join(os.path.dirname(__file__),'..','..', 'GreenGroceries', 'dataset', 'fruitvegprices-2017_2022.csv')
 LANGUAGES_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'languages.csv')
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'categories.csv')
+COUNTRIES_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'countries.csv')
 
 
 def get_label_name(string):
@@ -25,19 +25,10 @@ class ModelChoices:
         return [l for l in self.__dict__.values()]
 
 
-df = pd.read_csv(DATASET_PATH, sep=',')
 df_languages = pd.read_csv(LANGUAGES_PATH, sep=',')
 df_categories = pd.read_csv(CATEGORIES_PATH, sep=',')
+df_countries = pd.read_csv(COUNTRIES_PATH, sep=',')
 
-ProduceCategoryChoices = ModelChoices(df.category.unique())
-ProduceItemChoices = ModelChoices(df.item.unique())
-ProduceVarietyChoices = ModelChoices(df.variety.unique())
-ProduceUnitChoices = ModelChoices(df.unit.unique())
 LanguageChoices = ModelChoices(df_languages.language.unique())
 WordCategoryChoices = ModelChoices(df_categories.category.unique())
-
-UserTypeChoices = ModelChoices(['Farmer', 'Customer'])
-
-if __name__ == '__main__':
-    print(df.item.unique())
-    print(ProduceItemChoices.choices())
+CountryChoices = ModelChoices(df_countries.country.unique())
