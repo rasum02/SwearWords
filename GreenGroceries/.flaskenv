@@ -1,0 +1,2 @@
+FLASK_APP=GreenGroceries
+FLASK_ENV=development
