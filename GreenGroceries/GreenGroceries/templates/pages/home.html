@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% from "components/macros.html" import cta_button %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="home">
+        <section class="home__hero">
+            <div class="hero__left">
+                <h1>
+                    A Brief History of Swear Words
+                </h1>
+                <p>
+                    Swear words have existed for thousands of years and are found in almost every language and culture. Although people often think of profanity as rude or inappropriate, linguists and historians see it as an important part of human communication and social behavior.
+                </p>
+
+                <!-- {{ cta_button('btn--large') }}  OBS comment -->
+
+            </div>
+            <div class="hero__right">
+                <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="hero" class="hero__img">
+            </div>
+        </section>
+
+        <section class="home__info">
+            <h2 class="home__title">
+                Swearing in Modern Culture
+            </h2>
+            <div>
+                <div class="info__text">
+                    <h3>Lorem</h3>
+                    <p>
+                        Today, swear words are used for many different purposes:
+                    </p>
+
+                    <ul>
+                        <li>Expressing anger or frustration</li>
+                        <li>Adding humor or emphasis</li>
+                        <li>Creating social bonds between friends</li>
+                        <li>Showing rebellion or emotion</li>
+
+                    </ul>
+                    <p>
+
+                        Researchers in linguistics and psychology have even found that swearing can help people tolerate pain and express emotions more effectively.
+
+                        However, what counts as offensive varies widely between cultures. Some countries are more relaxed about profanity, while others still regulate or strongly discourage it in public media.
+                    </p>
+                </div>
+                <img src="{{ url_for('static', filename='images/produce1.jpg') }}" alt="produce">
+            </div>
+            <div>
+                <div class="info__text">
+                    <h3>Lorem</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        <br><br>
+
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, dolorum.
+
+                    </p>
+                </div>
+                <img src="{{ url_for('static', filename='images/produce2.jpg') }}" alt="produce">
+            </div>
+            <div>
+                <div class="info__text">
+                    <h3>Lorem</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        <br>
+
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+
+                    </p>
+                </div>
+                <img src="{{ url_for('static', filename='images/produce3.jpg') }}" alt="produce">
+            </div>
+
+            <h2 class="home__title">
+                Come shop with us
+            </h2>
+            <div>
+                <div class="info__text">
+                    <h3>Lorem</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+                        <br>
+
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut distinctio eaque esse
+                        iusto
+                        maiores minima mollitia nisi non omnis pariatur quos repellat tempore, veritatis vero.
+
+                    </p>
+
+                    {{ cta_button('btn--large') }}
+                </div>
+                <img src="{{ url_for('static', filename='images/produce4.jpg') }}" alt="produce">
+            </div>
+        </section>
+    </div>
+{% endblock %}
