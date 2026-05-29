@@ -22,21 +22,11 @@ if __name__ == '__main__':
         with open(os.path.join(base_dir, "users.sql")) as db_file:
             cur.execute(db_file.read())
         # Run produce.sql
-        with open(os.path.join(base_dir, "produce.sql")) as db_file:
+        with open(os.path.join(base_dir, "swearwords.sql")) as db_file:
             cur.execute(db_file.read())
 
-        # Import all produce from the dataset
-        all_produce = list(
-            map(lambda x: tuple(x),
-                df[['category', 'item', 'unit', 'variety', 'price']].to_records(index=False))
-        )
-        args_str = ','.join(cur.mogrify("(%s, %s, %s, %s, %s)", i).decode('utf-8') for i in all_produce)
-        cur.execute("INSERT INTO Produce (category, item, unit, variety, price) VALUES " + args_str)
-
-        # Dummy farmer 1 sells all produce
-        dummy_sales = [(1, i) for i in range(1, len(all_produce) + 1)]
-        args_str = ','.join(cur.mogrify("(%s, %s)", i).decode('utf-8') for i in dummy_sales)
-        cur.execute("INSERT INTO Sell (farmer_pk, produce_pk) VALUES " + args_str)
+        for code, name in LANGUAGES.items():
+            cur.execute
 
         conn.commit()
 
