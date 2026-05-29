@@ -71,8 +71,26 @@ if __name__ == '__main__':
                     (row['country_id'], row['language_id'])
                 )
 
+        # Insert categories from file
+        with open(os.path.join(data_dir, 'categories.csv'), 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                cur.execute(
+                    "INSERT INTO Category (category_id, category) VALUES (%s, %s) ON CONFLICT DO NOTHING",
+                    (row['category_id'], row['category'])
+                )
+
+        # Insert belongs_to (word-category relationship) from file
+        with open(os.path.join(data_dir, 'belongs_to.csv'), 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                cur.execute(
+                    "INSERT INTO BelongsTo (word_id, category_id) VALUES (%s, %s) ON CONFLICT DO NOTHING",
+                    (row['word_id'], row['category_id'])
+                )
+
         # Insert words and link to language
-        skip_files = {'countries.csv', 'languages.csv', 'speaks.csv'}
+        skip_files = {'countries.csv', 'languages.csv', 'speaks.csv', 'categories.csv', 'belongs_to.csv'}
         for filename in os.listdir(data_dir):
             if filename in skip_files:
                 continue

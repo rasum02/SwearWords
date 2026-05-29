@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Language (
 
 CREATE TABLE IF NOT EXISTS Category (
     category_id SERIAL PRIMARY KEY,
-    name VARCHAR(100)
+    category VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS Word (
