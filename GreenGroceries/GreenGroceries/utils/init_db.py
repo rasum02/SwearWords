@@ -17,10 +17,6 @@ if __name__ == '__main__':
         base_dir = os.path.dirname(__file__)
         data_dir = os.path.join(base_dir, '..', '..', '..', 'data')
 
-        # Run users.sql
-        with open(os.path.join(base_dir, "users.sql")) as db_file:
-            cur.execute(db_file.read())
-
         # Run swearwords.sql
         with open(os.path.join(base_dir, "swearwords.sql")) as db_file:
             cur.execute(db_file.read())
